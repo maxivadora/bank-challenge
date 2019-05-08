@@ -13,9 +13,9 @@
 
 FactoryBot.define do
   factory :user do
-    first_name { "MyString" }
-    last_name { "MyString" }
-    dni { "MyString" }
-    password_digest { "MyString" }
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
+    dni { Faker::Number.number(8) }
+    password { Faker::Alphanumeric.alpha(10) }
   end
 end
