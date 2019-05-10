@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_07_232059) do
+ActiveRecord::Schema.define(version: 2019_05_10_003939) do
 
   create_table "banks", force: :cascade do |t|
     t.string "name"
     t.decimal "rate", precision: 5, scale: 4
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "time_deposits", force: :cascade do |t|
+    t.integer "bank_id"
+    t.integer "user_id"
+    t.datetime "expiration_at"
+    t.decimal "deposit_amount", precision: 9, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bank_id"], name: "index_time_deposits_on_bank_id"
+    t.index ["user_id"], name: "index_time_deposits_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

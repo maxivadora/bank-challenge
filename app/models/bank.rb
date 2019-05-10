@@ -11,4 +11,6 @@
 
 class Bank < ApplicationRecord
   validates :name, :rate, presence: true
+
+  has_many :time_deposits
 end

@@ -16,4 +16,6 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :dni, presence: true
   validates :dni, uniqueness: true, numericality: { only_integer: true }
+
+  has_many :time_deposits
 end
