@@ -25,7 +25,6 @@ class TimeDeposit < ApplicationRecord
   validates :deposit_amount, presence: true
   validates :expiration_at, presence: true
 
-
   attr_accessor :duration_days
 
   private
