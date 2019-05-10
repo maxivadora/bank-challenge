@@ -19,15 +19,18 @@
 class TimeDeposit < ApplicationRecord
   belongs_to :bank
   belongs_to :user
+  
+  before_validation :set_expired_at
 
   validates :deposit_amount, presence: true
   validates :expiration_at, presence: true
 
-  before_create :set_expired_at
+
+  attr_accessor :duration_days
 
   private
   
   def set_expired_at
-    self.expiration_at = Time.zone.now + days.days
+    self.expiration_at = Time.zone.now + duration_days.days
   end
 end

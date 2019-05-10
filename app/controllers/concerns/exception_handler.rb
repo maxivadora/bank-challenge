@@ -9,6 +9,8 @@ module ExceptionHandler
     # ActiveRecord
     rescue_from ActiveRecord::RecordInvalid, with: :error_422
     rescue_from ActiveRecord::RecordNotFound, with: :error_404
+    # ActionController
+    rescue_from ActionController::ParameterMissing, with: :error_400
     # Custom
     rescue_from ExceptionHandler::InvalidToken, with: :error_401
     rescue_from ExceptionHandler::MissingToken, with: :error_401
@@ -16,6 +18,10 @@ module ExceptionHandler
   end
 
   private
+
+  def error_400 e
+    render json: { message: e.message }, status: :bad_request
+  end
   
   def error_401 e
     render json: { message: e.message }, status: :unauthorized
