@@ -22,4 +22,12 @@ class TimeDeposit < ApplicationRecord
 
   validates :deposit_amount, presence: true
   validates :expiration_at, presence: true
+
+  before_create :set_expired_at
+
+  private
+  
+  def set_expired_at
+    self.expiration_at = Time.zone.now + days.days
+  end
 end
