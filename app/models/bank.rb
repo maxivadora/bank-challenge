@@ -9,7 +9,6 @@
 #
 
 class Bank < ApplicationRecord
-  validates :name, :rate, presence: true
-
-  has_many :time_deposits
+  has_many :rates
+  has_many :time_deposits, through: :rates
 end

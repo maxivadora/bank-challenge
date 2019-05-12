@@ -7,12 +7,12 @@
 #  expiration_at  :datetime
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
-#  bank_id        :integer
+#  rate_id        :integer
 #  user_id        :integer
 #
 # Indexes
 #
-#  index_time_deposits_on_bank_id  (bank_id)
+#  index_time_deposits_on_rate_id  (rate_id)
 #  index_time_deposits_on_user_id  (user_id)
 #
 

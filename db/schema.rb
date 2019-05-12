@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_12_213007) do
+ActiveRecord::Schema.define(version: 2019_05_12_214918) do
 
   create_table "banks", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rates", force: :cascade do |t|
+    t.integer "bank_id"
+    t.decimal "value", precision: 5, scale: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bank_id"], name: "index_rates_on_bank_id"
   end
 
   create_table "time_deposits", force: :cascade do |t|
@@ -24,8 +32,8 @@ ActiveRecord::Schema.define(version: 2019_05_12_213007) do
     t.decimal "deposit_amount", precision: 9, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "bank_id"
-    t.index ["bank_id"], name: "index_time_deposits_on_bank_id"
+    t.integer "rate_id"
+    t.index ["rate_id"], name: "index_time_deposits_on_rate_id"
     t.index ["user_id"], name: "index_time_deposits_on_user_id"
   end
 
