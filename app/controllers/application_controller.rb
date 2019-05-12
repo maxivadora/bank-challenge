@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   include ExceptionHandler
-  before_action :set_default_response_format!
   before_action :authenticate_user!
+  before_action :set_default_response_format!
   
   private
 

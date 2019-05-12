@@ -17,12 +17,17 @@
 #
 
 class TimeDepositSerializer < ActiveModel::Serializer
-  attributes :id, :expiration_at, :deposit_amount, :bank
+  attributes :id, :expiration_at, :deposit_amount, :bank, :rate
 
   def bank
     {
-      name: self.object.bank.name,
-      rate: self.object.bank.rate
+      name: self.object.bank.name
+    }
+  end
+  
+  def rate
+    {
+      value: self.object.rate.value
     }
   end
 end
