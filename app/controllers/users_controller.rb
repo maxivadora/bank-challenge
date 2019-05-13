@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   include Doc::UserDoc
 
+  skip_before_action :authenticate_user!
+
   # POST /sign_up
   def create
     user = User.create!(user_params)
