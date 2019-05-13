@@ -11,4 +11,5 @@
 class Bank < ApplicationRecord
   has_many :rates
   has_many :time_deposits, through: :rates
+  has_one :last_rate, -> { order created_at: :desc }, class_name: 'Rate'
 end
