@@ -8,7 +8,7 @@ class AuthController < ApplicationController
     
     if @user && @user.authenticate(login_params[:password])
       auth_token = JsonWebToken.encode(user_id: @user.id)
-      render json: {user: @user, auth_token: auth_token }, status: :ok
+      render json: { user: @user, auth_token: auth_token }, status: :ok
     else
       render json: { error: { message: "Invalid credentials" }}, status: :unauthorized
     end

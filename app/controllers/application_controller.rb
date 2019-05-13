@@ -3,6 +3,8 @@ class ApplicationController < ActionController::API
   before_action :authenticate_user!
   before_action :set_default_response_format!
   
+  serialization_scope :view_context
+
   private
 
   def set_default_response_format!
