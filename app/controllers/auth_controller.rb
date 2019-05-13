@@ -1,5 +1,6 @@
 class AuthController < ApplicationController
-  
+  include Doc::AuthDoc
+
   skip_before_action :authenticate_user!, only: [:login]
 
   # POST /login

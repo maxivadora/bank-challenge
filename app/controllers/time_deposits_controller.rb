@@ -1,4 +1,6 @@
 class TimeDepositsController < ApplicationController
+  include Doc::TimeDepositDoc
+
   # GET /time_deposits
   def index
     time_deposits = current_user.time_deposits.includes(:bank)

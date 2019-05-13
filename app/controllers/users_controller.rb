@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include Doc::UserDoc
+
   # POST /sign_up
   def create
     user = User.create!(user_params)
