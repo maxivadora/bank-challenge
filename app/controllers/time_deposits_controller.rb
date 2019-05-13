@@ -14,6 +14,6 @@ class TimeDepositsController < ApplicationController
   private
 
   def time_deposit_params
-    params.require(:time_deposit).permit(:deposit_amount, :duration_days, :bank_id)
+    params.require(:time_deposit).permit(:deposit_amount, :duration_days, :rate_id)
   end
 end
