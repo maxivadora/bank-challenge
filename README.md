@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Dependencies
+* Ruby 2.4.0
+* Rails 5.2.3
 
-Things you may want to cover:
 
-* Ruby version
+## Documentation
 
-* System dependencies
+    https://bank-challenge-conta.herokuapp.com/apipie
 
-* Configuration
+### Authorization
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`Authorization` param has to be included in `headers` for each request, except in `login` and `signup`.
