@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_05_13_185248) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "banks", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -19,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_05_13_185248) do
   end
 
   create_table "rates", force: :cascade do |t|
-    t.integer "bank_id"
+    t.bigint "bank_id"
     t.decimal "value", precision: 5, scale: 4
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -27,12 +30,12 @@ ActiveRecord::Schema.define(version: 2019_05_13_185248) do
   end
 
   create_table "time_deposits", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "expiration_at"
     t.decimal "deposit_amount", precision: 9, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "rate_id"
+    t.bigint "rate_id"
     t.decimal "interest_amount", precision: 10, scale: 2
     t.index ["rate_id"], name: "index_time_deposits_on_rate_id"
     t.index ["user_id"], name: "index_time_deposits_on_user_id"
@@ -47,4 +50,7 @@ ActiveRecord::Schema.define(version: 2019_05_13_185248) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "rates", "banks"
+  add_foreign_key "time_deposits", "rates"
+  add_foreign_key "time_deposits", "users"
 end
